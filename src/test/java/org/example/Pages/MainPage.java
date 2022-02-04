@@ -11,19 +11,19 @@ public class MainPage {
     @FindBy(className = "textinput__control")
     private WebElement findField;
 
-    @FindBy(xpath = "//*[contains(text(), 'Найти')]/..")
+    @FindBy(xpath = "//*[contains(@class, 'search-input')]//button")
     private WebElement findBtn;
 
     @FindBy(xpath = "//*[contains(text(), 'Папки')]/../..")
     private WebElement foldersBtn;
 
-    @FindBy(xpath = "//*[contains(text(), 'Входящие')]/parent::div[contains(@class, 'control menu__item menu__item_type_option')]")
+    @FindBy(xpath = "//*[contains(text(), 'Входящие')]/parent::div[contains(@class, 'type_option')]")
     private WebElement inboxBtn;
 
-    @FindBy(xpath = "//span[contains(@class, 'mail-MessagesSearchInfo-Title')]/child::span")
+    @FindBy(xpath = "//span[contains(@class, 'mail-MessagesSearch')]/child::span")
     private WebElement amountOfMails;
 
-    @FindBy(xpath = "//*[contains(text(), 'Написать')]")
+    @FindBy(className = "mail-ComposeButton-Text")
     private WebElement writeBtn;
 
     @FindBy(className = "composeYabbles")
@@ -35,7 +35,7 @@ public class MainPage {
     @FindBy(xpath = "//*[contains(@class, 'cke_contents cke_reset')]/child::div")
     private WebElement textField;
 
-    @FindBy (xpath = "//div[contains(@class,'ComposeControlPanel-Part')]/descendant::button")
+    @FindBy(xpath = "//div[contains(@class,'ControlPanel-Part')]//button")
     private WebElement sendBtn;
 
     public WebDriver driver;

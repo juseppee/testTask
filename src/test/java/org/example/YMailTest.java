@@ -6,15 +6,14 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 
-
 public class YMailTest {
+
     public static WebDriver driver;
     public static LoginPage loginPage;
     public static MainPage mainPage;
@@ -39,8 +38,9 @@ public class YMailTest {
     public void checkAndSendTest(){
         //переход на страницу авторизации
         loginPage.pickLoginBtn();
+        String login = ConfProperties.getProperty("login");
         //авторизация
-        loginPage.enterLogin(ConfProperties.getProperty("login"));
+        loginPage.enterLogin(login);
         loginPage.pressEnter();
         loginPage.enterPassword(ConfProperties.getProperty("password"));
         loginPage.pressEnter();
@@ -55,17 +55,14 @@ public class YMailTest {
         String amountOfMails = mainPage.amountOfMails();
         //отправка сообщения с количеством сообщений на свою почту
         mainPage.writeMessage();
-        mainPage.inputReceiver(ConfProperties.getProperty("login"));
+        mainPage.inputReceiver(login);
         mainPage.setTheme(ConfProperties.getProperty("themeSurname"));
         mainPage.inputMessage(amountOfMails);
         mainPage.sendMessage();
-
-
     }
 
     @AfterClass()
     public static void tearDown() {
         driver.quit();
     }
-
 }
